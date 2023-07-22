@@ -2,10 +2,10 @@
 CP1404/CP5632 - Practical
 Broken program to determine score status
 """
+import random
+
 MAX_SCORE = 100
 MIN_SCORE = 0
-
-import random
 
 
 def main():
