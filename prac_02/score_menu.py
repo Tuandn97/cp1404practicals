@@ -16,16 +16,24 @@ PASSABLE_SCORE = 50
 def main():
     print(MENU)
     choice = input(">>>").upper()
+    score = 0  # Initialize the score outside the loop to be accessible everywhere
     while choice != "Q":
         if choice == "G":
             score = get_valid_score()
             print("Thank You!")
         elif choice == "P":
-            result = determine_score(score)
-            print(f" Your result is: {result}")
+            if score != 0:  # Ensure that a valid score has been entered before trying to print
+                result = determine_score(score)
+                print(f"Your result is: {result}")
+            else:
+                print("No score entered yet.")
         elif choice == "S":
-            for i in range(score):
-                print("*", end="")
+            if score != 0:  # Ensure that a valid score has been entered before trying to show stars
+                for i in range(score):
+                    print("*", end="")
+                print()  # Add a newline after printing stars
+            else:
+                print("No score entered yet.")
         else:
             print("Invalid input")
         print(MENU)
@@ -52,3 +60,4 @@ def determine_score(score):
 
 
 main()
+
