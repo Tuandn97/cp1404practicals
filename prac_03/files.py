@@ -20,3 +20,13 @@ with open('numbers.txt') as in_file:
     total_numbers = int(numbers[0]) + int(numbers[1])
 #     add the first two numbers together
     print(total_numbers)
+
+"""4. Now write a fourth block of code that prints the total for all lines in numbers.txt or a file with any number 
+of numbers. """
+total = 0
+with open('numbers.txt') as in_file:
+    for line in in_file:
+        number = int(line)
+        total += number
+print(total)
+
