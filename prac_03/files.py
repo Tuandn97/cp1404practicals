@@ -11,3 +11,12 @@ Your name is Bob"""
 with open(FILENAME) as in_file:
     name = in_file.read().strip()
     print(f"Your name is {name}")
+
+"""3. Create a text file called numbers.txt and save it in your prac directory. Put the following three numbers on 
+separate lines in the file and save it """
+
+with open('numbers.txt') as in_file:
+    numbers = in_file.read().split()
+    total_numbers = int(numbers[0]) + int(numbers[1])
+#     add the first two numbers together
+    print(total_numbers)
