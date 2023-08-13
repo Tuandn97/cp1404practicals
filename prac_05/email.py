@@ -22,6 +22,7 @@ def main():
 
 
 def convert_mail_to_name(mail):
+    """Get the name for provided email"""
     name_part = mail.split("@")[0]
     parts = name_part.split(".")
     name = " ".join(parts).title()
