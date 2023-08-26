@@ -1,6 +1,6 @@
 """
 CP1404/CP5632 Practical - Client test code to use the Guitar  class.
-Estimate: 10 minutes
+Estimate: 20 minutes
 Actual:   10 minutes
 """
 
