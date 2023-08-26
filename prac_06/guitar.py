@@ -1,7 +1,7 @@
 """CP1404/CP5632 Practical
 Guitar class """
 
-CURRENT_YEAR = 2023
+CURRENT_YEAR = 2013
 VINTAGE_AGE = 50
 
 
@@ -25,4 +25,3 @@ class Guitar:
     def is_vintage(self):
         """Determine if the guitar vintage or not"""
         return self.get_age() >= VINTAGE_AGE
-
