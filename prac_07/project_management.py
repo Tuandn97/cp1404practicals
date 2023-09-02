@@ -12,8 +12,7 @@ MENU = """- (L)oad projects
 - (F)ilter projects by date
 - (A)dd new project  
 - (U)pdate project
-- (Q)uit
-"""
+- (Q)uit"""
 
 FILE_NAME = 'projects.txt'
 NAME_INDEX = 0
@@ -32,10 +31,10 @@ def main():
             projects = load_projects(FILE_NAME)
             print("Projects loaded successfully.")
         elif choice == 's':
-            save_projects()
+            save_projects(FILE_NAME, projects)
             print("Projects saved successfully.")
         elif choice == 'd':
-            display_projects()
+            display_projects(projects)
         elif choice == 'f':
             pass
         elif choice == 'a':
@@ -44,6 +43,8 @@ def main():
             update_project()
         else:
             print("Invalid choice. Please select a valid option.")
+        print(MENU)
+        choice = input(">>> ").strip().lower()
 
     print("Thank you for using custom-built project management software.")
 
@@ -72,9 +73,9 @@ def save_projects(file_name, projects):
                            f"\t{project.cost_estimate:.1f}\t{project.percent_complete}\n")
 
 
-
-def display_projects():
-    pass
+def display_projects(projects):
+    for project in projects:
+        print(project)
 
 
 def filter_projects_by_date():
