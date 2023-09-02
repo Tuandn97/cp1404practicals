@@ -74,7 +74,21 @@ def save_projects(file_name, projects):
 
 
 def display_projects(projects):
+    incomplete_projects = []
+    completed_projects = []
+
     for project in projects:
+        if project.percent_complete < 100:
+            incomplete_projects.append(project)
+        else:
+            completed_projects.append(project)
+
+    print("Incomplete projects:")
+    for project in incomplete_projects:
+        print(project)
+
+    print("\nCompleted projects:")
+    for project in completed_projects:
         print(project)
 
 
