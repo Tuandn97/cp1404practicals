@@ -1,7 +1,7 @@
 """
 CP1404/CP5632 Practical 7 - Client code to use the Guitar  class.
 Estimate: 20 minutes
-Actual:    minutes
+Actual:   30 minutes
 """
 import csv
 from prac_07.guitar import Guitar
