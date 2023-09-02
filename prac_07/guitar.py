@@ -8,7 +8,7 @@ VINTAGE_AGE = 50
 class Guitar:
     """Guitar class storing guitar information"""
 
-    def __init__(self, name, year, cost,):
+    def __init__(self, name, year, cost):
         """Initialise a Guitar."""
         self.name = name
         self.year = year
@@ -25,3 +25,6 @@ class Guitar:
     def is_vintage(self):
         """Determine if the guitar vintage or not"""
         return self.get_age() >= VINTAGE_AGE
+
+    def __lt__(self, other):
+        return self.year < other.year
