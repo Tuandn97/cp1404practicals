@@ -41,15 +41,29 @@ def main():
             try:
                 date = datetime.datetime.strptime(date_str, "%d/%m/%Y").date()
                 filtered_projects = filter_projects_by_date(projects, date)
+                sorted_filtered_projects = sorted(filtered_projects, key=sort_by_start_date)
                 print("Filtered projects:")
-                for project in filtered_projects:
+                for project in sorted_filtered_projects:
                     print(project)
             except ValueError:
                 print("Invalid date format. Please use dd/mm/yyyy.")
         elif choice == 'a':
             add_new_project(projects)
         elif choice == 'u':
-            update_project()
+            print("Projects:")
+            for i, project in enumerate(projects):
+                print(f"{i} {project}")
+            project_choice = int(input("Project choice: "))
+            if 0 <= project_choice < len(projects):
+                project = projects[project_choice]
+                print(project)
+                new_percent_complete = get_valid_input("New Completion Percentage: ", project.percent_complete)
+                new_priority = get_valid_input("New Priority: ", project.priority)
+                project.percent_complete = new_percent_complete
+                project.priority = new_priority
+                print("Project updated successfully.")
+            else:
+                print("Invalid project choice.")
         else:
             print("Invalid choice. Please select a valid option.")
         print(MENU)
@@ -120,10 +134,6 @@ def add_new_project(projects):
     print("New project added successfully.")
 
 
-def update_project():
-    pass
-
-
 def get_valid_date(prompt):
     is_finished = False
     while not is_finished:
@@ -134,6 +144,21 @@ def get_valid_date(prompt):
             return date
         except ValueError:
             print("Invalid date format. Please use dd/mm/yyyy.")
+
+
+def get_valid_input(prompt, old_value):
+    while True:
+        user_input = input(prompt)
+        if user_input.strip() == "":
+            return old_value
+        try:
+            return int(user_input)
+        except ValueError:
+            print("Invalid input; enter a valid number.")
+
+
+def sort_by_start_date(project):
+    return project.start_date
 
 
 main()
