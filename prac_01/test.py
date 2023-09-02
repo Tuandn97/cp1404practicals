@@ -1,2 +1,8 @@
+MINIMUM_CHAR = 0
 
-    print(f"{word:{max_length}} : {word_to_count[word]}")
+password = input("Enter your password: ")
+
+while len(password) <= MINIMUM_CHAR:
+    print("Invalid Password")
+    password = input("Enter your password: ")
+print("*" * len(password))
