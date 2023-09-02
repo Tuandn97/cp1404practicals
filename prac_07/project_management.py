@@ -37,7 +37,15 @@ def main():
             completed_projects, incomplete_projects = determine_incomplete_complete(projects)
             display_projects(completed_projects, incomplete_projects)
         elif choice == 'f':
-            pass
+            date_str = input("Show projects that start after date (dd/mm/yyyy): ")
+            try:
+                date = datetime.datetime.strptime(date_str, "%d/%m/%Y").date()
+                filtered_projects = filter_projects_by_date(projects, date)
+                print("Filtered projects:")
+                for project in filtered_projects:
+                    print(project)
+            except ValueError:
+                print("Invalid date format. Please use dd/mm/yyyy.")
         elif choice == 'a':
             add_new_project()
         elif choice == 'u':
@@ -79,7 +87,7 @@ def display_projects(completed_projects, incomplete_projects):
     for project in incomplete_projects:
         print(project)
 
-    print("\nCompleted projects:")
+    print("Completed projects:")
     for project in completed_projects:
         print(project)
 
@@ -95,8 +103,9 @@ def determine_incomplete_complete(projects):
     return completed_projects, incomplete_projects
 
 
-def filter_projects_by_date():
-    pass
+def filter_projects_by_date(projects, date):
+    filtered_projects = [project for project in projects if project.start_date >= date]
+    return filtered_projects
 
 
 def add_new_project():
