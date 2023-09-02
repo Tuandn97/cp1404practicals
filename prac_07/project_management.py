@@ -64,8 +64,13 @@ def load_projects(file_name):
     return projects
 
 
-def save_projects():
-    pass
+def save_projects(file_name, projects):
+    with open(file_name, 'w') as out_file:
+        out_file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
+        for project in projects:
+            out_file.write(f"{project.name}\t{project.start_date.strftime('%d/%m/%Y')}\t{project.priority}"
+                           f"\t{project.cost_estimate:.1f}\t{project.percent_complete}\n")
+
 
 
 def display_projects():
