@@ -23,6 +23,7 @@ PERCENT_COMPLETE_INDEX = 4
 
 
 def main():
+    """The main function of the Project"""
     projects = load_projects(FILE_NAME)
     print(MENU)
     choice = input(">>> ").strip().lower()
@@ -73,6 +74,7 @@ def main():
 
 
 def load_projects(file_name):
+    """Load the date from the txt file and store in a list"""
     projects = []
     with open(file_name) as in_file:
         in_file.readline()
@@ -89,6 +91,7 @@ def load_projects(file_name):
 
 
 def save_projects(file_name, projects):
+    """Save all the data from the list to the txt file"""
     with open(file_name, 'w') as out_file:
         out_file.write("Name\tStart Date\tPriority\tCost Estimate\tCompletion Percentage\n")
         for project in projects:
@@ -97,6 +100,7 @@ def save_projects(file_name, projects):
 
 
 def display_projects(completed_projects, incomplete_projects):
+    """Display the Project list """
     print("Incomplete projects:")
     for project in incomplete_projects:
         print(project)
@@ -107,6 +111,7 @@ def display_projects(completed_projects, incomplete_projects):
 
 
 def determine_incomplete_complete(projects):
+    """Determine which project is complete or incomplete """
     incomplete_projects = []
     completed_projects = []
     for project in projects:
@@ -118,11 +123,13 @@ def determine_incomplete_complete(projects):
 
 
 def filter_projects_by_date(projects, date):
+    """Filter project list by the date """
     filtered_projects = [project for project in projects if project.start_date >= date]
     return filtered_projects
 
 
 def add_new_project(projects):
+    """Add new project to the projects"""
     print("Let's add a new project")
     name = input("Name: ")
     start_date = get_valid_date("Start date (dd/mm/yyyy): ")
@@ -135,6 +142,7 @@ def add_new_project(projects):
 
 
 def get_valid_date(prompt):
+    """Get the valid date"""
     is_finished = False
     while not is_finished:
         date_str = input(prompt)
@@ -147,6 +155,7 @@ def get_valid_date(prompt):
 
 
 def get_valid_input(prompt, old_value):
+    """Get valid input """
     while True:
         user_input = input(prompt)
         if user_input.strip() == "":
@@ -158,6 +167,7 @@ def get_valid_input(prompt, old_value):
 
 
 def sort_by_start_date(project):
+    """create a key to sort the this by date"""
     return project.start_date
 
 
