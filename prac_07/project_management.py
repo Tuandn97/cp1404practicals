@@ -34,7 +34,8 @@ def main():
             save_projects(FILE_NAME, projects)
             print("Projects saved successfully.")
         elif choice == 'd':
-            display_projects(projects)
+            completed_projects, incomplete_projects = determine_incomplete_complete(projects)
+            display_projects(completed_projects, incomplete_projects)
         elif choice == 'f':
             pass
         elif choice == 'a':
@@ -73,16 +74,7 @@ def save_projects(file_name, projects):
                            f"\t{project.cost_estimate:.1f}\t{project.percent_complete}\n")
 
 
-def display_projects(projects):
-    incomplete_projects = []
-    completed_projects = []
-
-    for project in projects:
-        if project.percent_complete < 100:
-            incomplete_projects.append(project)
-        else:
-            completed_projects.append(project)
-
+def display_projects(completed_projects, incomplete_projects):
     print("Incomplete projects:")
     for project in incomplete_projects:
         print(project)
@@ -90,6 +82,17 @@ def display_projects(projects):
     print("\nCompleted projects:")
     for project in completed_projects:
         print(project)
+
+
+def determine_incomplete_complete(projects):
+    incomplete_projects = []
+    completed_projects = []
+    for project in projects:
+        if project.percent_complete < 100:
+            incomplete_projects.append(project)
+        else:
+            completed_projects.append(project)
+    return completed_projects, incomplete_projects
 
 
 def filter_projects_by_date():
