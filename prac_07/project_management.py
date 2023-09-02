@@ -47,7 +47,7 @@ def main():
             except ValueError:
                 print("Invalid date format. Please use dd/mm/yyyy.")
         elif choice == 'a':
-            add_new_project()
+            add_new_project(projects)
         elif choice == 'u':
             update_project()
         else:
@@ -108,12 +108,32 @@ def filter_projects_by_date(projects, date):
     return filtered_projects
 
 
-def add_new_project():
-    pass
+def add_new_project(projects):
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = get_valid_date("Start date (dd/mm/yyyy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate ($): "))
+    percent_complete = int(input("Percent complete (%): "))
+    new_project = Project(name, start_date, priority, cost_estimate, percent_complete)
+    projects.append(new_project)
+    print("New project added successfully.")
 
 
 def update_project():
     pass
+
+
+def get_valid_date(prompt):
+    is_finished = False
+    while not is_finished:
+        date_str = input(prompt)
+        try:
+            date = datetime.datetime.strptime(date_str, "%d/%m/%Y").date()
+            is_finished = True
+            return date
+        except ValueError:
+            print("Invalid date format. Please use dd/mm/yyyy.")
 
 
 main()
