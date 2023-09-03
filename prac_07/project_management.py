@@ -1,7 +1,7 @@
 """
 CP1404/CP5632 Practical 7 - Client code to use the Project  class.
-Estimate: 11:40
-Actual:   30 minutes
+Estimate: 2 hours
+Actual:   2.5 hours
 """
 import datetime
 from prac_07.project import Project
@@ -167,7 +167,7 @@ def get_valid_input(prompt, old_value):
 
 
 def sort_by_start_date(project):
-    """create a key to sort the this by date"""
+    """create a key to sort the this by """
     return project.start_date
 
 
