@@ -1,6 +1,6 @@
 """
 CP1404 - Programming 2
-UnreliableCar Class
+UnreliableCar Client
 Name: Doa Ngoc Tuan
 Start from: 10:31 am  - Sat 16 Sep 2023
 """
